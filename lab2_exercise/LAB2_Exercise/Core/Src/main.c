@@ -40,68 +40,292 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+int digit1 = 1;
+int digit2 = 0;
+int digit3 = 2;
+int digit4 = 0;
+int led_buffer[4] ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
+static void MX_GPIO_Init(void);
+static void MX_TIM2_Init(void);
+int timer1_flag = 0;
+int counter1 = 0;
+int timer2_flag = 0;
+int counter2 = 0;
+int timer3_flag = 0;
+int counter3 = 0;
+int timer0_flag = 0;
+int counter0 =0;
+int counter5 = 0;
+int timer5_flag = 0;
 
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
-int main(void)
+void setTimer1(int duration){
+	counter1 = duration;
+	timer1_flag = 0;
+}
+void setTimer2(int duration){
+	counter2 = duration;
+	timer2_flag = 0;
+}
+void setTimer3(int duration){
+	counter3 = duration;
+	timer3_flag = 0;
+}
+void setTimer0(int duration){
+	counter0 = duration;
+	timer0_flag = 0;
+}
+void setTimer5( int duration ){
+	counter5 = duration;
+	timer5_flag = 0;
+}
+void timerRun(){
+	if(counter1 > 0){
+		counter1--;
+		if(counter1 <= 0){
+			timer1_flag = 1;
+              }
+	}
+	 if(counter2 > 0){
+			counter2 -- ;
+				if(counter2 <= 0){
+					timer2_flag = 1;
+				}
+			}
+		if(counter3 > 0){
+				counter3--;
+				if(counter3 <= 0){
+					timer3_flag = 1;
+				}
+			}
+		if(counter0 > 0){
+			counter0--;
+			if (counter0 <= 0){
+				timer0_flag = 1 ;
+			}
+		}
+		if(counter5 > 0){
+			counter5--;
+			if (counter5 <= 0){
+				timer5_flag = 1;
+			}
+		}
+}
+void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim2 )
 {
-  /* USER CODE BEGIN 1 */
+     timerRun();
 
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
 }
 
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+
+void updateClockBuffer(int a, int b){
+	digit1 = a/10;
+	digit2 = a%10;
+	digit3 = b/10;
+	digit4 = b%10;
+	led_buffer[0] = digit1;
+	led_buffer[1] = digit2;
+	led_buffer[2] = digit3;
+	led_buffer[3] = digit4;
+}
+
+
+void SCAN(int n){
+	switch (led_buffer[n]){
+	   case 0:
+	  		HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+	  		HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin,  0);
+	  		HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+	  		HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin,0 );
+	  		HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin,0 );
+	  		HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+	  		HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 1);
+	  		break;
+
+	   case 1:
+	 		HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 1);
+	 		break;
+	   case 2:
+	 		HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 0);
+	 		HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 1);
+	 		HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+	 		break;
+	   case 3:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0);
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0);
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 0);
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1);
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 1);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   case 4:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 1 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 1 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1);
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   case 5:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 1 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 0 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1 );
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   case 6:
+
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 1 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin,0 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin,0 );
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   case 7:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, 1 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1 );
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 1);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 1);
+			break;
+	   case 8:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin,0 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin,0 );
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   case 9:
+			HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, 0 );
+			HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, 0 );
+			HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, 0);
+			HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin,0 );
+			HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, 1);
+			HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, 0);
+			HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, 0);
+			break;
+	   default:
+		   break;
+	}
+}
+
+
+void update7SEG(int index_led){
+	switch (index_led){
+	case 0:
+		   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
+		   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+		   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+		   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+		   SCAN(index_led);
+		   break;
+	case 1:
+		   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+		   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
+		   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+		   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+		   SCAN(index_led);
+		   break;
+	case 2:
+		   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+		   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+		   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 0);
+		   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+		   SCAN(index_led);
+		   break;
+	case 3:
+		   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+		   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+		   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+		   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 0 );
+		   SCAN(index_led);
+		   break;
+	default:
+		break;
+	}
+}
+
+
+int main(void)
+{
+
+  SystemClock_Config();
+
+
+  MX_GPIO_Init();
+  MX_TIM2_Init();
+  HAL_TIM_Base_Start_IT (& htim2 );
+
+
+  int index_led=0;
+  setTimer0(10);
+  setTimer1(15);
+  setTimer2(15);
+  int hour = 15 , minute = 8, second = 50;
+  while (1)
+  {
+	  if(timer0_flag == 1){
+	  	  		second ++;
+	  		  	updateClockBuffer(hour, minute);
+	  		  	setTimer0(100);
+	  	  		if(second >= 60){
+	  	  			minute++;
+	  	  			second = 0;
+	  	  			if(minute >= 60){
+	  	  				  	minute = 0;
+	  	  				  	hour++;}
+	  	  				      if(hour >= 24){
+	  	  				  	  hour = 0;
+	  	  				  	  	}
+	  	  				  	}
+	  	  		}
+
+
+	  	  if(timer2_flag == 1){
+	  	  	update7SEG(index_led);
+	  	  	if(index_led >= 3){
+	  	  		index_led = 0;
+	  	  	}
+	  	  	else{
+	  	  		index_led++;
+	  	  	}
+	  	  	setTimer2(10);
+	  	  }
+	  	  if(timer1_flag == 1){
+	  	  	HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+	  	  	setTimer1(100);
+	  	  }
+  }
+
+}
+
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -131,6 +355,92 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 7999;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 9;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, DOT_Pin|EN0_Pin|EN1_Pin|EN2_Pin
+                          |EN3_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin
+                          |SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : DOT_Pin EN0_Pin EN1_Pin EN2_Pin
+                           EN3_Pin */
+  GPIO_InitStruct.Pin = DOT_Pin|EN0_Pin|EN1_Pin|EN2_Pin
+                          |EN3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SEG0_Pin SEG1_Pin SEG2_Pin SEG3_Pin
+                           SEG4_Pin SEG5_Pin SEG6_Pin */
+  GPIO_InitStruct.Pin = SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin
+                          |SEG4_Pin|SEG5_Pin|SEG6_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
