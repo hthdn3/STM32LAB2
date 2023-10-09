@@ -1,10 +1,23 @@
-10:14:18 **** Incremental Build of configuration Debug for project LAB2_Exercise ****
+10:37:13 **** Incremental Build of configuration Debug for project LAB2_Exercise ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "LAB2_Exercise.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LAB2\lab2_exercise\LAB2_Exercise\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB2_Exercise.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: LAB2_Exercise.elf
+ 
 arm-none-eabi-size   LAB2_Exercise.elf 
+arm-none-eabi-objdump -h -S  LAB2_Exercise.elf  > "LAB2_Exercise.list"
+arm-none-eabi-objcopy  -O ihex  LAB2_Exercise.elf  "LAB2_Exercise.hex"
+arm-none-eabi-objcopy  -O binary  LAB2_Exercise.elf  "LAB2_Exercise.bin"
    text	   data	    bss	    dec	    hex	filename
-   8496	     20	   1684	  10200	   27d8	LAB2_Exercise.elf
+   8432	     20	   1684	  10136	   2798	LAB2_Exercise.elf
 Finished building: default.size.stdout
  
+Finished building: LAB2_Exercise.hex
+Finished building: LAB2_Exercise.bin
+Finished building: LAB2_Exercise.list
+ 
+ 
+ 
 
-10:14:19 Build Finished. 0 errors, 0 warnings. (took 132ms)
+10:37:14 Build Finished. 0 errors, 0 warnings. (took 489ms)
 
