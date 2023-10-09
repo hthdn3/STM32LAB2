@@ -744,8 +744,7 @@ int main(void)
  80005e0:	2110      	movs	r1, #16
  80005e2:	4816      	ldr	r0, [pc, #88]	; (800063c <main+0x98>)
  80005e4:	f000 fd54 	bl	8001090 <HAL_GPIO_TogglePin>
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+
   while (1)
   {if (timer1_flag == 1){
  80005e8:	4b15      	ldr	r3, [pc, #84]	; (8000640 <main+0x9c>)

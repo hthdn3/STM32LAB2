@@ -299,8 +299,7 @@ int main(void)
   setTimer1(100);
   setTimer2(50);
   HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+
   while (1)
   {if (timer1_flag == 1){
 	   setTimer1(100);
