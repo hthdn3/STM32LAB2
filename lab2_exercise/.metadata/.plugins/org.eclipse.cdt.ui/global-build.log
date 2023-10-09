@@ -1807,3 +1807,174 @@ Finished building: LAB2_Exercise.bin
 Finished building: LAB2_Exercise.list
  
  
+11:45:49 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9564	     44	   1708	  11316	   2c34	demoex9.elf
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.bin
+Finished building: demoex9.hex
+Finished building: demoex9.list
+ 
+ 
+ 
+11:46:08 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9564	     44	   1708	  11316	   2c34	demoex9.elf
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.hex
+Finished building: demoex9.bin
+ 
+Finished building: demoex9.list
+ 
+ 
+11:48:38 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'SCAN_LED_MATRIX':
+../Core/Src/main.c:295:46: error: expected ',' or ';' before numeric constant
+  295 |    uint8_t row_value = matrix_buffer[index]  1;
+      |                                              ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:48:43 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9560	     44	   1708	  11312	   2c30	demoex9.elf
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.bin
+Finished building: demoex9.hex
+ 
+Finished building: demoex9.list
+ 
+ 
+12:36:48 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:400:8: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  400 |        if(minute >= 60)
+      |        ^~
+../Core/Src/main.c:402:12: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  402 |            hour++;}
+      |            ^~~~
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+   text	   data	    bss	    dec	    hex	filename
+   9564	     44	   1708	  11316	   2c34	demoex9.elf
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.hex
+Finished building: demoex9.bin
+ 
+Finished building: demoex9.list
+ 
+ 
+12:37:02 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:393:3: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  393 |   if(timer0_flag == 1)
+      |   ^~
+../Core/Src/main.c:395:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  395 |       updateClockBuffer(hour, minute);
+      |       ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:397:7: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  397 |       if(second >= 60)
+      |       ^~
+../Core/Src/main.c:399:8: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  399 |        second = 0;
+      |        ^~~~~~
+../Core/Src/main.c:400:8: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  400 |        if(minute >= 60)
+      |        ^~
+../Core/Src/main.c:402:12: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  402 |            hour++;}
+      |            ^~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:432:1: error: expected identifier or '(' before '}' token
+  432 | }
+      | ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+12:37:16 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:400:8: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  400 |        if(minute >= 60)
+      |        ^~
+../Core/Src/main.c:402:12: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  402 |            hour++;}
+      |            ^~~~
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9564	     44	   1708	  11316	   2c34	demoex9.elf
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.hex
+Finished building: demoex9.bin
+ 
+Finished building: demoex9.list
+ 
+ 
+12:41:53 **** Incremental Build of configuration Debug for project demoex9 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "demoex9.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32CubeIDE_1.7.0\LABs\LAB2\demoex9\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="demoex9.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: demoex9.elf
+ 
+arm-none-eabi-size   demoex9.elf 
+arm-none-eabi-objdump -h -S  demoex9.elf  > "demoex9.list"
+arm-none-eabi-objcopy  -O ihex  demoex9.elf  "demoex9.hex"
+arm-none-eabi-objcopy  -O binary  demoex9.elf  "demoex9.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9564	     44	   1708	  11316	   2c34	demoex9.elf
+Finished building: default.size.stdout
+ 
+Finished building: demoex9.hex
+Finished building: demoex9.bin
+ 
+Finished building: demoex9.list
+ 
+ 
