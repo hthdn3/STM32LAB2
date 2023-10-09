@@ -208,3 +208,18 @@ java.lang.Exception: The project description file (.project) for 'demoex9' is mi
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-10-09 10:11:38.061
 !MESSAGE Indexed 'laB2_EX2DEMO' (19 sources, 106 headers) in 1,83 sec: 7.551 declarations; 35.671 references; 6 unresolved inclusions; 100 syntax errors; 1.503 unresolved names (3,4%)
+
+!ENTRY org.eclipse.core.resources 4 567 2023-10-09 10:17:28.402
+!MESSAGE The project description file (.project) for 'demoex9' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for 'demoex9' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:763)
+	at org.eclipse.core.internal.resources.Project.open(Project.java:1060)
+	at org.eclipse.ui.actions.OpenResourceAction$1.doOpenWithReferences(OpenResourceAction.java:233)
+	at org.eclipse.ui.actions.OpenResourceAction$1.runInWorkspace(OpenResourceAction.java:279)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
