@@ -293,7 +293,7 @@ void SCAN_LED_MATRIX(int index){
 	  HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, 0);
 	  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, 0);
 
-	  uint8_t row_value = matrix_buffer[index];
+	  uint8_t row_value = matrix_buffer[index] >> 1;
 	  if(row_value & 0b00000001) HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, 1);
 	  if(row_value & 0b00000010) HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, 1);
 	  if(row_value & 0b00000100) HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, 1);
